@@ -10,7 +10,14 @@ import SwiftUI
 struct ItemRow: View {
     let item: MenuItem
     var body: some View {
-        Text(item.name)
+        HStack{
+            Image(item.thumbnailImage)
+            VStack{
+                Text(item.name)
+                Text("$\(item.price)")
+            }
+        }
+        
     }
 }
 
