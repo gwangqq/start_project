@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct ItemRow: View {
+    let colors: [String: Color] = ["D": .purple, "G": .black, "N": .red, "S": .blue, "V": .green]
+    
     let item: MenuItem
     var body: some View {
         HStack{
+            // image
             Image(item.thumbnailImage)
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                .overlay(Circle().stroke(Color.gray, lineWidth: 2))
+            
+            // name and price
             VStack{
                 Text(item.name)
                 Text("$\(item.price)")
+            }
+            Spacer()
+            ForEach(item.restrictions, id:\.self){
+                restriction in
+                Text(restriction)
+                    .font(.caption)
+                    .fontWeight(.black)
+                    .padding(5)
+                    .background(colors[restriction, default: .black])
+                    .clipShape(Circle())
+                    .foregroundColor(.white)
             }
         }
         
