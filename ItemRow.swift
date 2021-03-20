@@ -19,10 +19,11 @@ struct ItemRow: View {
                 .overlay(Circle().stroke(Color.gray, lineWidth: 2))
             
             // name and price
-            VStack{
+            VStack(alignment: .leading){
                 Text(item.name)
                 Text("$\(item.price)")
             }
+            
             Spacer()
             ForEach(item.restrictions, id:\.self){
                 restriction in
