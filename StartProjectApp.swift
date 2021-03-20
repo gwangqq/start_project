@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct StartProjectApp: App {
+    // To use Order.swift you have to add @StateObject
+    @StateObject var order = Order()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(order)
         }
     }
 }
