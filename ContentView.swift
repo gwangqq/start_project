@@ -12,12 +12,17 @@ struct ContentView: View {
     
     
     var body: some View {
+        // If you want to do something when a user tap an item on the list, use NavigationLinked
         NavigationView{
             List{
                 ForEach(menu){ section in
                     Section(header: Text(section.name)){
                         ForEach(section.items){ item in
-                            ItemRow(item: item)
+                            NavigationLink(
+                                destination: ItemDetail(item: item)){
+                                ItemRow(item: item)
+                            }
+                           
                         }
                     }
                 }
